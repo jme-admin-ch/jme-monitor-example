@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <name>${project.groupId}:${project.artifactId}</name>
+    <modelVersion>4.0.0</modelVersion>
+    <url>https://github.com/jme-admin-ch/jme-monitor-example/tree/main</url>
+    <scm>
+        <url>https://github.com/jme-admin-ch/jme-monitor-example.git</url>
+        <connection>scm:git:git://github.com/jme-admin-ch/jme-monitor-example.git</connection>
+        <developerConnection>scm:git:ssh://github.com:jme-admin-ch/jme-monitor-example.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>BIT</name>
+            <email>jeap-community@bit.admin.ch</email>
+            <organization>Federal Office of Information Technology, Systems and Telecommunication FOITT</organization>
+            <organizationUrl>https://www.bit.admin.ch/</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <parent>
+        <groupId>ch.admin.bit.jeap</groupId>
+        <artifactId>jeap-spring-boot-parent</artifactId>
+        <version>36.2.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>ch.admin.bit.jeap</groupId> <!-- GroupId is necessary for RHOS sca-check-->
+    <artifactId>jme-monitor-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>jme-log-service</module>
+        <module>jme-tracing-service</module>
+        <module>jme-prometheus-service</module>
+        <module>jme-monitor-test</module>
+    </modules>
+
+    <properties>
+        <jme-spring-boot-integration-test.version>5.4.0</jme-spring-boot-integration-test.version>
+        <maven.javadoc.skip>false</maven.javadoc.skip>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Add license to jar manifest -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <Bundle-License>https://www.apache.org/licenses/LICENSE-2.0</Bundle-License>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- Check third-party license compliance -->
+            <plugin>
+                <groupId>org.honton.chas</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+            </plugin>
+            <!-- Generate third-party license list and check for missing license information -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

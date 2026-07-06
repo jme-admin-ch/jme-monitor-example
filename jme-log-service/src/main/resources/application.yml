@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: jme-log-service
+server:
+  servlet:
+    context-path: /jme-log-service
+logging:
+  level:
+    # Show the log lines for incoming requests written by jeap-spring-boot-rest-request-tracing
+    ch.admin.bit.jeap.log.RestRequestTracer: DEBUG
+management:
+  # Trace every request so every demo call in this example produces a trace.
+  # Spring Boot's default is 0.1 (10%). Production services should usually leave the
+  # default in place (or sample even lower) to keep trace storage and cost bounded.
+  tracing:
+    sampling:
+      probability: 1.0
+jeap:
+  web:
+    tls:
+      enabled: false
+

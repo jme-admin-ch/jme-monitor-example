@@ -1,0 +1,25 @@
+# Local OpenTelemetry backend for the jme-monitor-example demo.
+#
+# Bundles OTel Collector, Tempo (trace storage) and Grafana (viewer) in a single
+# container. Services in this repo push OTLP traces here when the local profile
+# is active. Demo only — not a production setup.
+#
+#   Grafana UI:     http://localhost:3000  (admin / admin)
+#   OTLP gRPC:      localhost:4317
+#   OTLP HTTP:      localhost:4318
+#   Tempo HTTP API: localhost:3200 (queried directly by jme-monitor-test's TracingExportIT)
+#
+# On CI, the backend is reached via the compose service name "lgtm" instead (see docker-compose-ci.yml).
+services:
+  lgtm:
+    image: grafana/otel-lgtm:0.26.0
+    # No fixed container_name: on CI, concurrent builds reuse this compose file with different
+    # COMPOSE_PROJECT_NAME values, so the container name must stay project-scoped to avoid
+    # "name already in use" conflicts with another (or a leftover) build's container. The compose
+    # service name "lgtm" is still a stable, resolvable hostname on the network either way.
+    ports:
+      - "3000:3000"
+      - "4317:4317"
+      - "4318:4318"
+      - "3200:3200"
+    restart: unless-stopped

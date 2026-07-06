@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: jme-prometheus-service
+server:
+  servlet:
+    context-path: /jme-prometheus-service
+# Configuring a static key value pair to be added to the info actuator output.
+info:
+  staticInfo: value
+# Spring Boot supports configuring the percentiles of metrics externally, e.g. here for the metric "jobs.add".
+# We could also configure the percentiles on the "jobs" level and have the configuration applied to all metrics having
+# a name starting with "jobs", so we would not have to repeat the same percentiles configuration on every "jobs" metric.
+management:
+  metrics:
+    distribution:
+      percentiles:
+        jobs:
+          add: "0.5,0.8,0.9"
+jeap:
+  web:
+    tls:
+      enabled: false
+  health:
+    metric:
+      contributor-metrics:
+        enabled: true

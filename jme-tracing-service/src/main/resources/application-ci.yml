@@ -1,0 +1,8 @@
+# On CI, docker-compose-ci.yml doesn't publish host ports, so the LGTM backend must be reached
+# via the compose service name on the shared Docker network instead of localhost.
+management:
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: http://lgtm:4318/v1/traces

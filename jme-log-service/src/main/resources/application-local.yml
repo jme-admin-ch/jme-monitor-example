@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+# Push traces to the local LGTM stack started via docker/docker-compose.yml.
+# Without this property set, Spring Boot does not export traces (they are still
+# generated and visible as trace/span ids in MDC and the log).
+management:
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/traces
+
+jeap:
+  monitor:
+    prometheus:
+      password: "{noop}test"

@@ -1,0 +1,44 @@
+publiccodeYmlVersion: 0.5.0
+name: jme-monitor-example
+applicationSuite: JME
+softwareVersion: 1.0.0
+releaseDate: 2026-07-07
+url: "https://github.com/jme-admin-ch/jme-monitor-example.git"
+landingURL: "https://github.com/jme-admin-ch/jme"
+platforms:
+  - web
+categories:
+  - application-development
+developmentStatus: stable
+softwareType: standalone/backend
+organisation:
+  uri: https://ld.admin.ch/office/V.1.7
+  name: Federal Office of Information Technology, Systems and Telecommunication
+description:
+  en:
+    localisedName: jme-monitor-example
+    shortDescription: Example project demonstrating logging, distributed tracing and Prometheus metrics for jEAP microservices.
+    longDescription: >
+      This repository shows how to set up logging, distributed tracing and technical monitoring for jEAP
+      Blueprint Microservices. It consists of three services and a local OpenTelemetry backend:
+      * jme-log-service: An example of how to generate structured, trace-correlated logs.
+      * jme-tracing-service: An example of how to use distributed tracing to correlate log lines across services,
+        calling jme-log-service to demonstrate cross-service trace propagation.
+      * jme-prometheus-service: An example of how to integrate a Prometheus endpoint for technical monitoring,
+        including custom counters, gauges, distribution summaries and timers.
+    features:
+      - Demonstrates structured logging with trace/span id correlation via MDC
+      - Demonstrates distributed tracing across service boundaries using Micrometer Tracing and OpenTelemetry
+      - Demonstrates exposing custom Prometheus metrics and actuator info
+      - Includes a local OpenTelemetry backend (Grafana, Tempo, OTel Collector) for exploring traces
+legal:
+  license: Apache-2.0
+maintenance:
+  type: internal
+  contacts:
+    - name: Federal Office of Information Technology, Systems and Telecommunication FOITT
+      email: jeap-community@bit.admin.ch
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - en

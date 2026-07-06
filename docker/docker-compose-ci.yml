@@ -1,0 +1,14 @@
+# CI overlay for docker-compose.yml. On CI the Maven build itself runs inside a container attached
+# to the same Docker network as the containers started here, so host ports are not needed — and
+# not published, to avoid clashing with other parallel builds. Services reach the backend via the
+# compose service name (lgtm) instead of localhost, see application-ci.yml.
+services:
+
+  lgtm:
+    ports: !reset [ ]
+
+networks:
+  default:
+    external: true
+    # Network is created by the CI job and includes the test runner & the container started by this compose file
+    name: ${COMPOSE_PROJECT_NAME}_default
