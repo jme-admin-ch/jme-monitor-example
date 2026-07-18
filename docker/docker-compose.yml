@@ -12,7 +12,7 @@
 # On CI, the backend is reached via the compose service name "lgtm" instead (see docker-compose-ci.yml).
 services:
   lgtm:
-    image: grafana/otel-lgtm:0.29.0
+    image: grafana/otel-lgtm:0.29.1
     # No fixed container_name: on CI, concurrent builds reuse this compose file with different
     # COMPOSE_PROJECT_NAME values, so the container name must stay project-scoped to avoid
     # "name already in use" conflicts with another (or a leftover) build's container. The compose
