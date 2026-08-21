@@ -119,7 +119,7 @@ points at `http://localhost:8090/jme-log-service/`.
    ```bash
    curl http://localhost:8091/jme-tracing-service/tracing
    ```
-4. Open Grafana at <http://localhost:3000> → **Explore** → datasource **Tempo**
+4. Open Grafana at [http://localhost:3000](http://localhost:3000) → **Explore** → datasource **Tempo**
    → **Search**, pick `jme-tracing-service` from the *Service Name* dropdown,
    click **Run query**.
 5. Click a trace. You should see spans from `jme-tracing-service` *and*
