@@ -34,7 +34,7 @@
 
     <groupId>ch.admin.bit.jeap</groupId> <!-- GroupId is necessary for RHOS sca-check-->
     <artifactId>jme-monitor-example</artifactId>
-    <version>7.7.0-SNAPSHOT</version>
+    <version>7.7.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
